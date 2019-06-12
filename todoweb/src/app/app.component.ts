@@ -1,6 +1,5 @@
 import { Component } from "@angular/core";
 import axios from "axios";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import { TodoDataService } from "./todo-data.service";
 import { Todo } from "./todo";
@@ -14,12 +13,13 @@ axios.defaults.baseURL = "http://127.0.0.1:8000";
   providers: [TodoDataService]
 })
 export class AppComponent {
-  faTimes = faTimes;
   newTodo: Todo = new Todo();
   todos: Todo[] = [];
 
   constructor(private todoDataService: TodoDataService) {
     this.init();
+    this.removeTodo = this.removeTodo.bind(this);
+    this.toggleTodoComplete = this.toggleTodoComplete.bind(this);
   }
 
   async init() {
@@ -40,5 +40,9 @@ export class AppComponent {
   async removeTodo(todo) {
     await this.todoDataService.deleteTodoById(todo.id);
     this.todos = this.todos.filter((item: Todo) => item.id !== todo.id);
+  }
+
+  get sortedTodos(): Todo[] {
+    return this.todos.sort((item: Todo) => -item.id);
   }
 }

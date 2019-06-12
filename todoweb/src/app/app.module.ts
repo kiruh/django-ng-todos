@@ -5,9 +5,10 @@ import { FormsModule } from "@angular/forms";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 import { AppComponent } from "./app.component";
+import { TodorowComponent } from './todorow/todorow.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, TodorowComponent],
   imports: [BrowserModule, FormsModule, FontAwesomeModule],
   providers: [],
   bootstrap: [AppComponent]

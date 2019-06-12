@@ -1,0 +1,41 @@
+<div class="d-flex align-items-center justify-content-between">
+  <div
+    class="custom-control custom-checkbox"
+    (click)="toggleTodoComplete(todo)"
+  >
+    <input
+      type="checkbox"
+      class="custom-control-input"
+      (click)="toggleTodoComplete(todo)"
+      [checked]="todo.completed"
+    />
+    <label class="custom-control-label">{{ todo.title }}</label>
+  </div>
+
+  <button
+    class="btn btn-delete-todo btn-light btn-sm"
+    (click)="removeTodo(todo)"
+  >
+    <fa-icon [icon]="faTimes"></fa-icon>
+  </button>
+</div>
+<div>
+  <span *ngFor="let todoTag of todoTags">
+    <span class="badge badge-pill custom-badge"
+      >{{ todoTag.tagText }}
+      <button
+        class="btn btn-sm btn-delete-tag"
+        (click)="removeTodoTag(todoTag)"
+      >
+        <fa-icon [icon]="faTimes" size="xs"></fa-icon>
+      </button>
+    </span>
+  </span>
+  <input
+    class="form-control tag-input"
+    placeholder="Add tag..."
+    autofocus=""
+    [(ngModel)]="newTodoTag.tagText"
+    (keyup.enter)="addTodoTag()"
+  />
+</div>

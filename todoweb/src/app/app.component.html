@@ -9,35 +9,13 @@
   />
   <section class="main" *ngIf="todos.length > 0">
     <ul class="list-group">
-      <li *ngFor="let todo of todos" class="list-group-item">
-        <div class="d-flex justify-content-between">
-          <div
-            class="custom-control custom-checkbox"
-            (click)="toggleTodoComplete(todo)"
-          >
-            <input
-              type="checkbox"
-              class="custom-control-input"
-              (click)="toggleTodoComplete(todo)"
-              [checked]="todo.completed"
-            />
-            <label class="custom-control-label">{{ todo.title }}</label>
-          </div>
-
-          <button
-            class="btn btn-outline-danger btn-sm"
-            (click)="removeTodo(todo)"
-          >
-            <fa-icon [icon]="faTimes"></fa-icon>
-          </button>
-        </div>
+      <li *ngFor="let todo of sortedTodos" class="list-group-item">
+        <app-todorow
+          [todo]="todo"
+          [toggleTodoComplete]="toggleTodoComplete"
+          [removeTodo]="removeTodo"
+        ></app-todorow>
       </li>
     </ul>
   </section>
-  <footer class="footer" *ngIf="todos.length > 0">
-    <span class="todo-count"
-      ><strong>{{ todos.length }}</strong>
-      {{ todos.length == 1 ? "item" : "items" }} left</span
-    >
-  </footer>
 </section>

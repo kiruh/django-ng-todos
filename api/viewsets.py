@@ -14,3 +14,5 @@ class TodoTagViewSet(viewsets.ModelViewSet):
     queryset = TodoTag.objects.all()
     serializer_class = TodoTagSerializer
     permission_classes = []
+    filter_fields = ["todo"]
+

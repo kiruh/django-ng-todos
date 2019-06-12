@@ -7,7 +7,7 @@ export class Todo {
     Object.assign(this, values);
   }
 
-  static serialize(values: Object = {}): Todo {
+  static deserialize(values: Object = {}): Todo {
     return new Todo({
       id: values["id"],
       title: values["todo_text"],
@@ -15,7 +15,7 @@ export class Todo {
     });
   }
 
-  deserialize(): Object {
+  serialize(): Object {
     return {
       id: this.id,
       todo_text: this.title,
